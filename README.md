@@ -1,27 +1,118 @@
-# CreateLibraryApp
+## Create new angular project
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.9.
+```
+ng new demo-app
+```
 
-## Development server
+```
+cd demo-app
+```
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+```
+npm install --save bootstrap
+npm install --save @thantine/thantine-angular-ui@latest
+```
 
-## Code scaffolding
+## Add bootstrap to angular project by modifying the styles section in angular.json
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+```
+"styles": [
+  "node_modules/bootstrap/dist/css/bootstrap.min.css",
+  "src/styles.css"
+],
+```
 
-## Build
+## Usage
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+- app.module.ts
 
-## Running unit tests
+```
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+import { ThantineModule } from '@thantine/thantine-angular-ui';
 
-## Running end-to-end tests
+import { AppComponent } from './app.component';
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+@NgModule({
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    BrowserModule,
+    ThantineModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
 
-## Further help
+```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+- app.component.ts
+
+```
+import { Component } from '@angular/core';
+
+import { MenuItem } from '@thantine/thantine-angular-ui';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent {
+  public avatarUrl = 'assets/images/avatar.png';
+  public logoUrl = 'assets/images/logo.png';
+
+  public menuItems: MenuItem[] = [
+    {href: '/menu-item-1', text: 'Menu item 1'},
+    {href: '/menu-item-2', text: 'Menu item 2'},
+  ];
+
+  public userMenuItems: MenuItem[] = [
+    {href: '/user-item-1', text: 'user item 1'},
+    {href: '/user-item-2', text: 'user item 2'},
+  ];
+
+  public sidebarItems: MenuItem[] = [
+    {href: '/sidebar-item-1', text: 'sidebar item 1'},
+    {href: '/sidebar-item-2', text: 'sidebar item 2'},
+  ];
+}
+```
+
+- app.component.html
+
+```
+<thantine-header
+  [logoUrl]="logoUrl"
+  [avatarUrl]="avatarUrl"
+  [menuItems]="menuItems"
+  [userMenuItems]="userMenuItems"
+></thantine-header>
+
+<main class="main__content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12 col-lg-2 bg-dark">
+
+        <thantine-sidebar [items]="sidebarItems"></thantine-sidebar>
+
+      </div>
+
+      <div class="col-12 col-lg-10">
+        <div class="row">
+          <div class="col-12 col-md-6 offset-md-3">
+
+            <thantine-login></thantine-login>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<thantine-footer></thantine-footer>
+```
