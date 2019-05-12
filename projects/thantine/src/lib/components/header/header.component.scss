@@ -1,0 +1,41 @@
+@import "node_modules/bootstrap/scss/bootstrap";
+
+.navbar {
+  background: #232323;
+}
+
+.header__logo {
+  margin: 0 50px 0 0;
+  line-height: 2.5rem;
+
+  img {
+    width: auto;
+    height: 50px;
+  }
+}
+
+.navbar-nav {
+  flex: 1 0 auto;
+}
+
+.dropdown-item {
+  border: none;
+}
+
+.dropdown-item a {
+  color: #232323;
+}
+
+.avatar {
+  vertical-align: middle;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+@media(min-width: 992px) {
+  .btn-group .dropdown-menu {
+    right: 0;
+    left: initial;
+  }
+}

@@ -1,0 +1,55 @@
+<header>
+  <nav class="navbar navbar-expand-lg navbar-dark justify-content-between">
+    <h1 class="header__logo">
+      <a class="navbar-brand" href="/">
+        <img alt="logo" [src]="logoUrl" />
+      </a>    
+    </h1>
+    
+    <button
+      class="navbar-toggler"
+      [class.collapsed]="!shouldShowMenu"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbarNavAltMarkup"
+      aria-controls="navbarNavAltMarkup"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+      (click)="toggleMenu()"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    
+    <div
+      class="collapse navbar-collapse"
+      [class.show]="shouldShowMenu"
+      id="navbarNavAltMarkup"
+    >
+      <ul class="navbar-nav">
+        <li *ngFor="let item of menuItems" class="nav-item">
+          <a class="nav-link" [href]="item.href">{{item.text}}</a>
+        </li>
+      </ul>
+      
+      <div class="btn-group" [class.show]="shouldShowProfile">
+        <a
+          href="#"
+          class="btn btn-secondary dropdown-toggle"
+          data-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded="false"
+          (click)="toggleUserProfile()"
+        >
+          <img [src]="avatarUrl" alt="Avatar" class="avatar">            
+        </a>
+
+        <ul class="dropdown-menu" [class.show]="shouldShowProfile">
+          <li class="dropdown-item" *ngFor="let userMenuItem of userMenuItems">
+            <a [href]="userMenuItem.href">{{userMenuItem.text}}</a>
+          </li>
+        </ul>
+      </div>
+    
+    </div>
+  </nav>
+</header>

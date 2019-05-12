@@ -1,0 +1,7 @@
+@import "node_modules/bootstrap/scss/bootstrap";
+
+.sticky__sidebar {
+  position: sticky;
+  height: 100%;
+  overflow: auto;
+}

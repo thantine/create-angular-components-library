@@ -17,6 +17,14 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "thantine": [
+        "dist/thantine"
+      ],
+      "thantine/*": [
+        "dist/thantine/*"
+      ]
+    }
   }
 }

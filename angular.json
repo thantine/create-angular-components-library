@@ -23,6 +23,7 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.css"
             ],
             "scripts": [],
@@ -124,6 +125,41 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": "e2e/tsconfig.e2e.json",
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "thantine": {
+      "root": "projects/thantine",
+      "sourceRoot": "projects/thantine/src",
+      "projectType": "library",
+      "prefix": "thantine",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/thantine/tsconfig.lib.json",
+            "project": "projects/thantine/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/thantine/src/test.ts",
+            "tsConfig": "projects/thantine/tsconfig.spec.json",
+            "karmaConfig": "projects/thantine/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/thantine/tsconfig.lib.json",
+              "projects/thantine/tsconfig.spec.json"
+            ],
             "exclude": [
               "**/node_modules/**"
             ]
